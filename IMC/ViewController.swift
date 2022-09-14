@@ -24,6 +24,9 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
 
     @IBAction func calculate(_ sender: Any) {
         if let weight = Double(tfWeight.text!), let height = Double(tfHeight.text!) {
@@ -52,9 +55,10 @@ class ViewController: UIViewController {
                 result = "Obesidade"
                 image = "obseidade"
         }
-        lbResult.text = result
+        lbResult.text = "\(Int(imc)): \(result)"
         ivResult.image = UIImage(named: image)
         viResult.isHidden = false
+        view.endEditing(true)
     }
 }
 
